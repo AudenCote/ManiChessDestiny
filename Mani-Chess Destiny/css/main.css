@@ -1,0 +1,48 @@
+@font-face { font-family: western; src: url('../assets/CarnivaleeFreakshow-DLrm.ttf'); }
+
+body {
+  text-align:center;
+  background-image:linear-gradient(white, rgb(217,215,199));
+}
+
+.header {
+  margin-bottom:60px;
+  margin-top:-50px;
+  height:20%;
+  font-size: 60px;
+  width:60%;
+  margin-left:20%;
+  color:rgb(58, 22, 14);
+}
+
+#content-div {
+  width:75%;
+  margin-left:12.5%;
+}
+
+#content-div p {
+  font-size: 20px;
+}
+
+li {
+  font-size: 18px;
+}
+
+h1 {
+  font-family:western;
+}
+
+#rules {
+  font-size: 70px;
+}
+
+.head-hr {
+  margin-left:35%;
+  width:30%;
+  margin-top:-10px;
+  border-color:black;
+}
+
+#head-p {
+  font-size:25px;
+}

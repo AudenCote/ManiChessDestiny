@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mani-Chess Destiny</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style> body {padding: 0; margin: 50px;} </style>
+    <script src="libraries/p5.js"></script>
+    <script src="libraries/p5.sound.js"></script>
+    <script src="js/Sqr.js"></script>
+    <script src="js/button.js"></script>
+    <script src="js/popupExplanations.js"></script>
+    <script src="js/infoBox.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/satan.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/sketch.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Mani-Chess Destiny</h1>
+      <h4 style="font-size: 20px; margin-top:-50px;">A Prototype Built by Auden Cote-L'Heureux</h4>
+      <hr class="head-hr">
+      <p id="head-p">Mani-Chess Destiny is a JavaScript based computer game built off of chess, but in the style of the gilded age.
+      Choose for your team of six from a selection of era-appropriate characters, including but not limited to J.P. Morgan, Frederick
+      Remington, assorted immigrants, cowboys, and native Americans, and more.</p>
+    </div>
+    <div id="canvas-div"></div>
+
+    <div id="content-div">
+      <h1 id="rules">The Game</h1>
+      <hr class="head-hr">
+      <p>The goal of Mani-Chess Destiny is to have the most property on the board by the time every square on the board is filled.
+        That is, by the time each square is "occupied" by a railroad, city, mine, baseball field, forest, park, windmill, or character
+        of any kind, whichever place has the most of the above items is the winner, and a message will pop up on the screen declaring
+        it so. This fits well with the message given by the phrase from which the game title is derived - Manifest Destiny, which was
+        the idea that Americans had a manifest right, given by God, to lay claim to any new territory they came across as they moved
+        west.</p>
+
+      <p>Each team has 6 characters. These are chosen from the start up menu, and are discussed in greater detail below. Each character
+        has its own special abilities - i.e. business owners can build railroads and mines and populists can add farmers to their team
+        if their team is currently in favor with Boss Tweed. Different players can also work together to further build their team - cowboys,
+        business owners and immigrants can, through several steps, produce new immigrants as dictated by history and discussed below. The game
+        alternates turns automatically, just like chess, and each turn, a player can either move or an ability can be used by clicking on the
+        "toggle info-boxes" button in the bottom right and clicking on their button and following instructions below.</p>
+
+      <p>Mani-Chess Destiny was built to be a simplified version of chess, but with assisted abilities that twist chess into a game of
+      territory sustaining and team building as well. It retains many aspects of chess - the gridded board, the unique characters with
+      different movement patterns, the two player setup, and an achievable end goal. However, characters are not captured but instead
+      destroyed by certain characters' abilities, and events occur at regular intervals throughout the game, working for or against a player
+      or both players.</p>
+
+      <h1 id="rules">The Players</h1>
+      <hr class="head-hr">
+      <p>Each team has six characters, which can be chosen from the startup menu. There are 14 possible characters to choose from for your
+      team, and much of the teaching is done in the choosing of the players. Read this section to know how to do that to your best advantage,
+      and read "The Strategy" for even more information on this. The players and their symbols/movement patterns are listed below.</p>
+      <ul style="list-style: none;">
+        <li>Vanderbilt - no movements - solid square</li>
+        <li>Gowen - no movements - solid square</li>
+        <li>Morgan - no movements - solid square</li>
+        <li>Republican - no movements - empty square</li>
+        <li>Democrat - no movements - empty square</li>
+        <li>Populist - no movements - empty square</li>
+        <li>Crazy Horse - vertical and horizontal - empty circle</li>
+        <li>Wovoka - vertical and horizontal - empty circle</li>
+        <li>Freedman - vertical and horizontal one square - empty circle</li>
+        <li>Cowboy - vertical and horizontal one square - solid circle</li>
+        <li>Farmer - vertical and horizontal one square - solid circle</li>
+        <li>Immigrant - vertical and horizontal one square - solid circle</li>
+        <li>Beecher Stowe - diagonally - triangle</li>
+        <li>Riis - diagonally - triangle</li>
+        <li>Remington - diagonally - triangle</li>
+      </ul>
+      <h3>Immigrants</h3>
+      <p>Immigrants, the last choice on the list of characters in the start up menu, are among the most important in the game,
+      if not the most important. Since the very name of the era, the Gilded Age, refers to the impression that immigrants had before
+      they arrived in America and then what they discovered after, immigrants in Mani-Chess Destiny are a basic building block of one's team.
+      They can move only one square vertically and horizontally, representing the limited resources that they had upon arrival in the country,
+      and the small living areas that they had access to in tenements. When certain conditions are met, as discussed in "The Rules," an immigrant
+      may build a city. This is representative of the fact that a huge amount of the urbanization that occured in the late 19th
+      century, largely as a result of influxes of immigrant populations. Immigrants can be generated at other points in the game, as discussed
+      in other sections.</p>
+      <h3>Farmers</h3>
+      <p>Farmers are another necessary character to have on your team in order to make any progress in the game. Cities cannot be built without
+      farmers, as the members of the city need to be fed (as evidenced by the famines that plagued the east when farmers started to fail). However,
+      having too many farmers is also a problem for their team - more than five, and the team sufferes from overproduction, and again no more
+      cities may be built. Farmers may also only move one square horizontally or vertically, also representative of their limited place in society
+      and the poverty and therefore limited opportunity many of them experienced.</p>
+      <h3>Cowboys</h3>
+      <img src="https://tse4.mm.bing.net/th?id=OIP.27CoW36hJEefkyr16HJE6wHaFd&pid=Api" style="height:300px;border-radius:5px;">
+      <h5>Figure 1.1</h5>
+      <p>The necessity of this character depends on the strategy path that one chooses. No cities can be created if one has no mines and only cowboys,
+      but also if one has railroads but no cowboys. This is because when a railroad is next to a city, a farmer can make a "cattle run" between the two.
+      This is done by clicking on the cowboy's "cattle run" button, then clicking on a railroad, and then clicking on a city, in that order. This is
+      representative of the actual role of the cowboy on the American frontier, which was ferrying cattle (used for food) to railroads on trails such as the Chisholm Trail (Figure 1.1), where it was
+      then transported to cities. Once a cattle run has been made, a new immigrant (also representative of general lowly cityfolk) may be produced,
+      as a city's population can not grow unless it is supplied with food (or coal - not that eating coal is suggested, but it works in-game).</p>
+      <h3>Vanderbilt</h3>
+      <img src="https://tse4.mm.bing.net/th?id=OIP.rjfYrDrCgXyUgmGKKLUF3gAAAA&pid=Api" style="height:300px;border-radius:5px;">
+      <h5>Figure 1.2</h5>
+      <p>Cornelius Vanderbilt was one of the wealthiest men in America in the Gilded Age, being the head of the huge monopoly that was the railroad
+      industry (Figure 1.2), most prominently owning the New York Central Railroad. He is categorized as a businessman in game, and may be affected
+      as so by events as listed or by the abilities of other players. Vanderbilt's main ability in-game is the ability to build railroads. To do this,
+      one clicks first on his "build railroad" button, and then on the spot at which the railroad is desired to be built. Most railroads tend to be built
+      next to cities to make the cattle run process more easy. Be careful not to build too many railroads, though - any more than 6, and the railroad
+      has overextended itself, and two railroads will be liquidated. This was a real problem for large railroad companies, especially after the Panic
+      of 1893. Business owners cannot move in Mani-Chess Destiny, representative of the fact that they did not really do any heavy work, and generally
+      used and abused their workers into doing mostly everything for them.</p>
+      <h3>Franklin B. Gowen</h3>
+      <p>Although also known for being president of the Reading Railroad, Gowen is most primarily associated with owning many of the mines that were
+      the target of the Molly Maguires (see events). In order for the Molly Maguires to be an integral part of Mani-Chess Destiny, it was seen fit that
+      Gowen be added to the game as a way for mines to be built, thus opening an entirely new strategy path. By building a mine next to a city, which is
+      Gowen's ability and can be executed by clicking his "Build Mine" button. If a mine is next to a city of the same team, a new immigrant is created
+      by that city each turn. This might seem better than the railroad path, but one of the events is when the Molly Maguires strike, and when this happens
+      all of the mines on the board are taken.</p>
+      <h3>J.P. Morgan</h3>
+      <p>During gameplay, J.P. Morgan operates in exactly the same way to Vanderbilt and is nearly identical, being able to build railroads and move in
+      the same way. While Morgan in real life was more associated with banking and financing, he was heavily involved with workings on wall street and
+      had invested in over 24 railroads and was very involved in the steel industry, which had certain ties with the railroad industry. </p>
+      <h3>Democrat</h3>
+      <p>Democrats in the Gilded Age, especially in the south, appealed mostly to conservative and even confederate people, also primarily residing in the
+      south, which was the Confederate States of America during the Civil War. Cleveland was one of the only Democratic presidents of the era, depending on
+      how it is defined, but the democrat in-game represents no particular platform, but moreso the general platform of the more confederate leaning party.
+      When a Democrat's team is in favor with Boss Tweed, the Democrat's ability is unlocked. This is done by clicking on the Democrat's button, and has
+      the effect of destroying all of the freedmen on the other team, representative of the racism that ran rampant in the democratic platform, given who
+      they put effort into appealing to.</p>
+      <h3>Republican</h3>
+      <p>The Republican platform was most effective in the north during the Gilded Age, and was based primarily off of pleasing the rich. It is for this reason
+      that the Populist Party seemed more appealing to many people, especially those less well off, that had previously put their faith in the Republican party,
+      which was generally the more progressive of the two (Republican and Democratic) parties. It is for this reason that the republican character's ability in-game
+      is to generate another business owner. Remember, since this is a politician, they cannot move, and their abilities can only be used if their team is in
+      favor of Boss Tweed.</p>
+      <h3>Populist</h3>
+      <p>The Populist Party was one of if not the most successful third parties in the history of the U.S., raising relatively massive support throughout the 1890s.
+      Events like Coxey's march on Washington rallied the common folk behind the party, and Mary Lease (a.k.a. the "Kansas Tornado") swept through the west rallying
+      poor farmers to the cause. Although the populist party died out after making a very poor decision in the 1896 election that led to the vote being split and McKinley
+      winning the election, the Populists in Mani-Chess Destiny still have the ability to add a farmer to their side if Boss Tweed has their team in favor.</p>
+      <h3>Crazy Horse</h3>
+      <p>Crazy Horse was a Lakota war leader who fought at the Battle of Little Bighorn, or Custer's Last Stand, in 1876. This battle was part of the Great
+      Sioux War, and was a major victory for the Native Americans, whiping out Custer's entire armed force of westerners and cavalry. It was not only a
+      physical victory, but also a triumph over the oppression that the government at the time had been forcing on the Natives, and for that reason, Crazy
+      Horse's ability is to remove a politician from the opposing team. The Great Sioux War did however represent a shift in the strategy of the government
+      in taking on Native populations, which led to elimination of entire communities in events such as the Sand Creek Massacre, which can be read more about
+      below.</p>
+      <h3>Wovoka</h3>
+      <p>After years of being put on reservations, escaping, being assimilated, and now being eliminated, Natives were desparate for any hope for their people
+      moving forward. For many people, that hope came in the form of Wovoka, and assimilated Native who took paiute in order to have visions, in which he claimed
+      to see the future. In these visions the Native Americans were rescued by nature and natural disasters taking down the white population of the east, and
+      desparate followers flocked to him immediately, calling themselves Ghost Dancers. Western settlers were terrified of these ghost dancers, and their platform
+      was one of resisting movement west, and for that reason, Wovoka's ability is to remove a farmer from the other team. Wovoka's actions would eventually
+      lead to the massacre at Wounded Knee, but that worked against Wovoka of course, and that is therefore left out of his ability set.</p>
+      <h3>Freedman</h3>
+      <p>After the Civil War and the abolition of slavery by the 13th amendment to the Constitution, there were millions of now freed slaves throughout the
+      country, although most prominently in the south. These free blacks were called "freedmen," and were very much discriminated against immediately. They
+      were, in many parts of the country, still forced to be under white employment, and were restricted from moving up in society much at all. For that reason,
+      the freedman character has no special ability, but they are potentially a relatively powerful piece - if one has more than 2 when the African Americans
+      in Cities event occurs, that team gains one more city on their side.</p>
+      <h3>Harriet Beecher Stowe</h3>
+      <p>Beecher Stowe was a leading abolitionist as well as author throughout the 19th century in America, being best known for her book Uncle Tom's Cabin.
+      Throughout her life and in said book, which attempted to alert northerners to the atrocities that the practice of slavery was resulting in in the south,
+      Beecher Stowe advocated for the rights of slaves and then freedmen, and for that reason her in-game ability is to add a freedman onto her team. All social
+      reformers can move any distance diagonally, to represent them going a different direction from other members of society. They are the only character type
+      that can do this.</p>
+      <h3>Jacob Riis</h3>
+      <img src="https://tse1.mm.bing.net/th?id=OIP.oHcaL-p2BBthzHqw7qn89QAAAA&pid=Api" style="height:300px;border-radius:5px;">
+      <h5>Figure 1.3</h5>
+      <p>Jacob Riis was a Danish man who came to America in the 1800s and turned into a prominent social reformer of the era. Best known for his photography,
+      Riis published How the Other Half Lives, a book of photojournalism (Figure 1.3) that captures the extreme poverty that governed so many living in cities and coins
+      the term "poverty gap." As a result of the growing awareness of the wealthiest men in America ignoring these problems, sometimes whole blocks were razed,
+      such as in the case of Mulberry Bend, on which floors regularly fell in and which was the most crowded place in American history, and these rich business
+      owners were often shamed. To reflect this, Riis's ability in Mani-Chess Destiny is to "expose," which converts an immigrant from the other team onto his team.</p>
+      <h3>Frederick Remington</h3>
+      <img src="https://tse3.mm.bing.net/th?id=OIP.icebudeYkZsKAP9zQ_aXQwHaFQ&pid=Api" style="height:300px;border-radius:5px;">
+      <h5>Figure 1.4</h5>
+      <p>Frederick Remington was an American painter during the Gilded Age who painted propogandic scenes of the "wild west" (Figure 1.4) and who exacerbated and
+      encouraged the myth of the lone cowboy and life on the American Frontier. His paintings often capture wild action scenes, such as bucking broncos and
+      gun fights with native Americans, and reflect a lot of the same ideology as could be seen in Buffalo Bill's travelling wild west shows. Perhaps not as
+      a direct result of Remington's art, but because of the myth, many easterners went west with the dreams of becoming this glorified nomadic cowboy
+      who wrestled bears and shot natives, and therefore Remington's ability in Mani-Chess Destiny is "recruit," where he adds a western farmer to his side.</p>
+
+
+
+
+      <h1 id="rules">The Rules</h1>
+      <hr class="head-hr">
+      <p>The rules of Mani-Chess Destiny are enforced by the program, but those that are not listed alsewhere in the documentation are described here. Each team
+      starts by choosing six characters that go well together. Once the game starts, Player 1 goes first (on the top). The turn is listed on the bottom. They may move
+      a player or use a character's ability. Each character has its own movement restrictions. They are delineated above where the characters are described. An immigrant
+      may build a city if they have at least one farmer (for food production) but no more than 5 (overproduction). Once a player has two cities, in order to build any
+      more they need at least two railroads or mines. This is to emphasize the importance of the development of transportation and industry in the urbanization that occured
+      during the guilded age. Every turn, a city has the potential of producing another immigrant. This may be done if a cowboy does a cattle run between a railroad and
+      that city, or if that city is next to a mine. Other characters can be produced in different ways, either through abilities or events.</p>
+      <p>A social reformer may only enact their abilities if the other team has at least one city. If more than six railroads are built, then that railroad has overextended
+        and two railroads, one farmer, and one immigrant are lost. A politician may only use their ability if they are currently in favor with Boss Tweed. A team is in
+        favor with Tweed if they have at least four cities and the other team does not. This is to represent the absolute hold that political machines such as Tamenny Hall
+        had on the politics of the Gilded Age. When a character is hovered over, their info-box shows up. This contains a button that can be clicked, operating their ability.
+        Read "The Players" for more information on this. Info-boxes can be toggled on and off for ease of movement with the button in the bottom right-hand corner. If anything
+        is unclear as far as gameplay or the rules of Mani-Chess Destiny, contact Auden and he will clarify and add the issue to this section.
+
+
+
+      <h1 id="rules">The Events</h1>
+      <hr class="head-hr">
+      <p>In Mani-Chess Destiny, there are 26 events that occur regularly and independently of player activity during the game. Most of
+      these events were built constructively, such as the development of the Bessemer Process, in order to further gameplay and prevent
+      stalling, some are benign, such as the building of baseball fields or city parks, and some have negative impacts for one or both teams,
+      such as the Panic of 1893. When an event occurs, a popup screen will appear with historical and in-game information about the event,
+      which one is encouraged to read until they are more familiar with the game. Each specific event is discussed briefly below, and, as
+      mentioned, in game as well. While events usually have simple impacts in game to keep Mani-Chess Destiny simple and as least confusing
+      as possible, the placards that come up tell how more complex results played out in real life.</p>
+
+      <h3>The Homestead Act</h3>
+      <p>In 1862, Abraham Lincoln passed the Homestead Act. This permitted settlers moving west in America to buy plots of up to 160 acres of land for a very low price, given that they would commit to occupying that land for at least five years. This drove thousands of prospective farmers west in the 1960s with the hope of being able to set up a profitable farm and raise a family - however, over production of farm products, as well as other factors such as high transportation prices for livestock on railroads, led many farmers to go bankrupt or devastatingly in debt. When the Homestead Act even occurs in Mani-Chess Destiny, two new farmers are added at random on the board. This may seem like a good thing at first, but over production is always a threat, and if your team has more than 3 farmers, then no more cities can be built...
+      </p>
+      <h3>The Kansas Tornado</h3>
+      <p>Between 1860 and 1900, the number of farmers in the country nearly quadrupled. This led to problems such as overproduction, which put many farmers in poverty. In the late 1880s, a woman named Mary Lease joined the Populist Party and began advocating for the political rights of farmers. She travelled throughout the west and spoke to gatherings of farmers, encouraging them to take action. The slogan of the movement became "raise less corn and more hell," and Lease became known as the "Kansas Tornado" by the way she whipped up the common western farmers into a fury at her speeches. Because of her the populist part grew considerably and farmers began to take action and take their lives into their own hands, when the "Kansas Tornado" event occurs, one farmer from each team is converted into a populist politician.
+      </p>
+      <h3>The Panic of 1893</h3>
+      <p>In 1893 there was a massive financial crash that affected every sector of the economy, caused mostly by foreign (Argentinian) crop failure and bank runs as people got wind of financial unstability in the country, worsening the problem. The depression, which lasted from 1893 to 1897 was the worst the country had seen up to that point and caused catastrophic economic losses. As a result of the depression, over 8000 business went bankrupt, 3 million people ended up unemployed, many banks went out of business, and many railroads were forced to liquidate. This devastation is reflected in Mani-Chess Destiny: when the Panic of 1893 event occurs, two railroads are lost at random from the board, one farmer is lost from the board as most western farmers relied heavily on the rail system, and one immigrant is lost as well to represent the unemployment rates skyrocketing.
+      </p>
+      <h3>Comstock Lode</h3>
+      <p>When gold and silver were struck in Washoe, Nevada in 1859, in the Comstock Lode, miners, mostly from California, came flooding into the region. Once the deposits of silver on the surface and in rivers was all taken by individual miners, Eastern business owners came in with more advanced equipment, allowing them to dig deeper than others had before. They were able to extract silver from large veins at a time, and these operations yielded tremendous profits for the first few years - over 300 million dollars in 20 years. For this reason, when the Comstock Lode event occurs in game, another business owner is added at random (in both type and team) to the board.
+      </p>
+      <h3>The Sand Creek Massacre</h3>
+      <p>The Sand Creek Massacre was one of many devastating massacres of Native American communities that took place in the second half of the 19th century. At this particular tragedy, members of the Arapaho and Cheyenne tribes were the victims, having had come into conflict with bands of miners moving west. The white settlers promptly built a local army, set to end these conflicts, and the governor of the region called upon local Native groups to gather near military outposts to avoid danger. However, one band of Natives under Black Kettle was attacked anyway by a group of armed miners, many drunk, and 133 Natives were killed. 105 women and children were included in this toll. For this reason, when the Sand Creek Massacre occurs in game, one native is lost from each team.
+      </p>
+      <h3>Drought Strikes!</h3>
+      <p>Farmers that moved west faced many different challenges while chasing the agrarian dream, and finding it only to be myth. Besides overproduction and poverty, natural and environmental occurances sometimes devastated everybody's crops. One of these occurances was drought - in the late 1880s, a series of dry spells caused farmers to lose crops and business, and forced them to be creative in how they got water - many set up deep mines with windmills to pump water, and some large coorporations had enough money to set up large irrigation systems. However, windmills often weren't enough for most western farmers, and further losses were had. For this reason, when the drought event occurs in-game, one farmer is lost at random from the board and there is a chance (that decreases as the game continues) that a windmill is built on a random square.
+      </p>
+      <h3>Molly Maguires</h3>
+      <p>The Molly Maguires were a secret society started in Ireland that moved to the United States in the late 19th century, and after the Panic of 1873 (less devastating than the similarly named Panic of 1893) began to terrorize coal mines in Pennsylvania, most of which were owned by Franklin B. Gowen, a character in Mani-Chess Destiny who has the ability to build coal mines. The attempts of the Molly Maguires to take down the monopoly that was the coal industry was used against the employees, as the mine owners began to make up offenses that the workers "committed," using them as an excuse to treat the workers more harshly and work them harder. When the Molly Maguires strike in-game, all of the mines on the board disappear (which is not necessarily representative of absolute destruction in real life, but also to counter the power of the mines in-game otherwise) and one immigrant is taken from the board, to represent the oppression directed at the workers after the business owners start making up offenses.
+      </p>
+      <h3>The Timber Culture Act</h3>
+      <p>Following the Homestead Act, the Timber Culture Act was passed in 1873 and granted western farmers another 160 acres (doubling their land) if they planted trees on a quarter of their land. This was done to prevent abuse of the Homestead Act, a timber was needed to build new settlements and for firewood for anyone permanently staying on the given land. It also appealed to farmers and was an attempt to silence some of their grievances as they sunk further into poverty or succumbed to bonanza farms. When the Timber Culture Act event occurs in Mani-Chess Destiny, there is an increasingly low chance as the game goes on that one random square becomes a forest.
+      </p>
+      <h3>The Rise of Taylorism</h3>
+      <p>Frederick Winslow Taylor developed ideas of how business owners of the gilded age could increase the efficiency of their companies - primarily by subdividing tasks among their employees. This would make workers more interchangeable and "diminish a manager's dependence on any particular employee" and speed up production, as well as decrease need for highly skilled workers. This saved companies money as they could hire less valuable employees, including women and children. As this philosophy caught on, many companies that employed it were more successful, and for this reason when this event occurs in game, one railroad and one mine are added to each side to represent growing strength of business owners.
+      </p>
+      <h3>Coxey Gets to Washington</h3>
+      <p>In 1894, Ohio businessman Jacob Coxey led a growing army of unemployed workers and western farmers east towards Washington D.C. to protest the destruction dealt by the Panic of 1893 and promote progressive ideas surrounding work and payment of workers, such as creation of new federal jobs and workers being paid in paper money. Coxey and his army also marched in support of a Populist ideology, in full support of the "People's Party." Although Coxey was promptly arrested upon arrival in D.C., it was a symbol of growing power for the People's Party and the common man, and resulted in further growth of the Populist Party, which advocated mainly for the rights of the people and common fold. Becauseof this, if a team's politician is populist when this event occurs in-game, that team gains two farmers.
+      </p>
+      <h3>Ragged Dick</h3>
+      <p>Ragged Dick was a story first published in 1867 and written by Horatio Alger. Ragged Dick was a teenage bootblack in New York City who grew up in poverty and often homeless. In the story, however, he decides to "turns over a new leaf" and, through luck and hard work, becomes a respectable business owner who commits acts of heroism, such as rescuing a child from drowning, and is therefore rewarded. The message of the story was consistent with the "golden" American dream that appealed to so many immigrants moving to cities and the U.S. - hard work will make them rich, or at least respectable. In real life however, the vast majority of immigrants coming to U.S. cities had a life nothing like that of Ragged Dick - and this golden dream revealed itself to only be gilded. Representative of this draw of immigrants to cities, an immigrant is added to each team when the Publishing of Ragged Dick event occurs in-game.
+      </p>
+      <h3>City Parks</h3>
+      <p>Frederick Olmstead and Calvert Vaux were landscape artists and architects in the 19th century who contributed to the idea of America being Gilded by beautifying cities - both to heighten the appeal of cities and to provide a transcendental escape from city life. They did this by planning and seeing to the construction of city parks - most famously, Central Park in New York City. To reflect this, when this event occurs in-game, a "City Park" has the chance of popping up on a random square, but this chance decreases as the game continues.
+      </p>
+      <h3>Baseball</h3>
+      <p>By the time the Civil War ended in the 1860s, Baseball was growing at an increasing rate in America. Around 200 official clubs had popped up, and by 1869, the Cincinnati Red Stockings (the team that would become the Boston Red Sox) became the first official salaried team. In 1876 Albert Spalding helped to start the National League, and by 1903 the first World Series was taking place. Baseball represents the growing variety of leisurely activites that emerged during the Gilded age at all levels of society. When the baseball event occurs in-game, there is a chance that decreases as the game goes on that a baseball field will be built on a random square.
+      </p>
+      <h3>Immigration Restriction League</h3>
+      <p>In 1894 the Immigration Restriction League was created by three prominent educated men who believed that Anglo-Saxons were ethnically superior to many of the different immigrant groups coming to America at that time, especially during the depression after 1893, where wages and employment rates were exceedingly vulnerable. The group attempted to pass a bill in Congress that greatly restricted the number of immigrants able to enter the country and to reduce immigrant rights as well. Because of this, when the Immigration Restriction League event occurs in-game, mines and railroads are not able to produce immigrants in the next turn for either team.
+      </p>
+      <h3>Pullman Strike</h3>
+      <p>In late spring to early summer of 1894, railroad workers, led by the American Railway Union and Eugene Debs, went on strike throughout the country against the Pullman Company in what would be come to be known as the Pullman Strike. The Pullman Strike resulted eventually in drastic changes in labor laws in the U.S., and was one of the most significant strikes of the era, and Pullman lost much of its property, mainly in residential holdings. Because of this, when the Pullman Strike event occurs in-game, one railroad is lost at random from the board. However, no immigrants (representing the workers) are added since quite a few striking workers were murdered by railroad managers and other opponents to the strike.
+      </p>
+      <h3>Reservations</h3>
+      <p>In a significant step of trying to deal with Native populations getting in the way of western expansion and denying the white American's Manifest Destiny, Native Americans were put onto reservations. While these areas were large, they were often far from the tribe's traditional home, and many Native groups, such as the Nez Perce, were moved hundreds of miles from their original homes which were often times situated around sacred spots. This was a further problem for many tribes that relied on buffalo hunting to sustain their families and communities, and they would follow the buffalo as they moved year round. Reservation prevented them from doing this, and as a result many Native groups either suffered great losses of people and culture, or simply left reservation, in which case they had a death warrant automatically placed on their heads. Because of this, when the reservation event is called in-game, Native Americans can no longer move, lasting the rest of the game.
+      </p>
+      <h3>Dawes Act</h3>
+      <p>In another stage of handling the still sizable Native American population in America, an act was passed called the Dawes Act. This was an action of assimilation, or trying to integrate Natives into American communities and lifestyle. Under the Dawes Act, Native Americans were given a significant portion of land on the Western Frontier, available for cultivation and farming in the future. This further worsened problems among farmers and Natives, as farming in the west was known to be a worthless profession anyway. On top of this, many Natives did not adhere to the ideas that land can be owned, and therefore simply left. That notwithstanding, in-game when the Dawes Act is passed, a native from each side is converted to a farmer - but be careful, this could be problematic. Too many farmers and you could suffer from overproduction!
+      </p>
+      <h3>African Americans in Cities</h3>
+      <p>Following the Civil War, there was a significant population of freedmen in both the north and south of the country. As the movement of urbanization began to develope and grow, many of these freedmen as well as more recent African-American immigrants began to flood into cities (primarily Chicago, New York, Washington, and Baltimore) in tens of thousands as there was little other place for them to be successful in the country, and cheap housing could often be found in places such as tenements. In reflection of this, when this event occurs in-game, if a team has more than two freedmen on their side, another city is added to their side.
+      </p>
+      <h3>The Bessemer Process</h3>
+      <p>In the late 1800s, Henry Bessemer (along with William Kelly) developed a new method for creating steel from iron. This involved blowing air through melted iron to bubble out impurities or slag, and took the name of the "Bessemer Process." This new techniques, along with others developed slightly later in the time period, allowed for immensely greater production of steel, a necessary resource for the building of railroads, as well as the steel girders discussed in another event. Because of this, when the Bessemer Process is developed in Mani-Chess Destiny, one railroad is added to the board at random to represent these new mechanical achievements during this time period.
+      </p>
+      <h3>Haymarket Square</h3>
+      <p>In 1886 in Chicago, the American Federation of Labor and workers from other companies were going on strike, and called a meeting between the radical leaders of the union movement and the enraged workers at Haymarket Square. Some way into the growing protests as other strikers joined, police ordered the rabble to diffuse - but they did not, and instead a bomb was thrown in their direction by a protestor. It killed 7 officers and injured nearly 70 others. The police fired on the crowd, and even more people were killed, and later more would be tried for murder and hung or put in prison. The Haymarket Square riot became a symbol of the growing movement of anarchy in the country, as well as a symbol for the push for worker's rights and the creation of unions, and still remains so today. However, since it was a direct loss to workers on that day, one immigrant is lost from the board when the Haymarket Square event is called in-game.
+      </p>
+      <h3>Steel Girders</h3>
+      <p>With the development of revolutionary new technologies, from mass production in making tools and machinery to the Bessemer Process in creating steel, as well as the spur of building collapses and city-wide fires losing business owners' money and destroying the homes of immigrants and others, came new architectural techniques as well. The development of the steel girder structure greatly strengthened buildings and eventually allowed for the building of skyscrapers - in cases like Manhattan where a city may not be able to spread out, there is still room to spread up. When the Steel Girder Structure event occurs in Mani-Chess Destiny, City Fire events no longer have any effect.
+      </p>
+      <h3>City Fires</h3>
+      <p>With the immense growth of cities and the populations within them, whole neighborhoods had to spring up practically overnight to compensate. This spurred a careless attitude towards the building of new cities throughout the country among business owners, and soon had devastating effects. Entire floors or even buildings were known to collapse, especially in overcrowded and cheaply built tenements, and in some cases great fires ran rampant and destroyed whole areas of cities. Examples of this are the Great Chicago Fire in 1871, which left over 100,000 homeless, and the Boston Fire of 1872. When fires strike in Mani-Chess Destiny, if the Steel Girder Structure has not been developed yet, one city is eliminated at random from the board.
+      </p>
+      <h3>The Rise of Nationalism</h3>
+      <p>In 1888, the utopian novel Looking Backward by Edward Bellamy, from Chicopee, Massachusetts, was published. It was one of the greatest bestsellers of its time, and told the story of a young man who falls into a coma and wakes up in the year 2000 in the United States, now a socialist utopia. The book addresses problems with capitalism, and talks about how with this new concept of socialism, which Bellamy calls nationalism, the great cities of the U.S. could be greater, as seen by the young man in his book. This spurred a new movement among intellectuals in the U.S., and lead to further support for unions and the Knights of Labor. Symbolizing what is depicted in the book, a new city is added at random to the board.
+      </p>
+      <h3>Social Darwinism</h3>
+      <p>After the publishing of On the Origin of Species by Charles Darwin in 1859, the idea of evolution became progressively more appealing to higher members of society such as business owners, possibly as an explanation for their level of social status over others, such as their workers. When some applied this newfound idea of survival of the fittest to society, social Darwinism was born, and was used as a reason by some factory and business owners to further use or abuse their employees for the company's benefit. Because of this, when Social Darwinism arises in-game, one immigrant, representing a lowly worker, is lost at random from the board.
+      </p>
+      <h3>The Interstate Commere Act</h3>
+      <p>As the railroad industry grew early on, it did so unchecked by the government, and was therefore able to abuse the impoverished or nearly so farmers out of their money each time a ride to a city was needed. With the rise of the populist party and support for the common man, the Interstate Commerce Act of 1887 was passed. This bill attempted to diffuse power from the monopoly that was the railroad industry (most notably under Vanderbilt) by enforcing certain regulations on it, such as requiring railroads to post their fees publicly so that they could not be raised on the whim of the railroad managers and at the expense of the poor. To reflect this, when the ICA is passed in Mani-Chess Destiny, if a team has more than two railroads a farmer is added to that team, to represent the farmers being better able to utilize the railroads in their own good.
+      </p>
+      <h3>The Currency Act</h3>
+      <p>One of the main building blocks that the Populist Party platform was built upon by the time of their demise in the 1890s was that of a 16:1 ratio of silver to gold value in the American economy. This would push inflation, resulting in the debts of farmers to be more easily paid off, an idea that was appealing to many of the supporters of the People's Party, and the people themselves. However, having made a poor decision that led to the vote being split in the 1896 election, the Populist Party began to fade, and with it, their plans for the national currency. In 1900, the Currency or Gold Standard Act was passed, making gold the official American standard. This contributed to marking the end for the Populist Party, and so when the Currency Act is passed in-game, one populist politician is gone at random from the board.
+      </p>
+
+
+      <h1 id="rules">The Strategy</h1>
+      <hr class="head-hr">
+      <p>The first and one of the most major places that player strategy comes into play in Mani-Chess Destiny is in the choosing of players.
+      Since the goal of the game is to have the most property on the board by the end of the game, one must make a decision on how
+      they are going to attempt to do this. There are three main strategies - one can simply attempt to foil the other player, one can
+      try to generate property using railroads and cowboys, or one can generate property using mines. To choose a strategy, one has to
+      have a basic knowledge of how that strategy was applied historically, and to use the strategy, one has to understand how and why
+      each character operates as they do. For example, if one were to attempt to simply stop the other team from advancing, they should
+      probably make sure that they have at least one or more social reformers. Historically, reformers such as Jacob Riis were able to
+      stir trouble among the wealthy Americans - by shedding light on what they were overlooking in areas such as the poverty gap, a term
+      that he coined. In fact, his actions at least in part led to areas with high poverty and population densities being destroyed in cities,
+      such as in cases like Mulberry Bend. This is reflected in the game because if you have Jacob Riis on your team, then you are able to "expose"
+      the other - and convert one of their immigrants over to yours. One might also want natives such as Wovoka or Crazy Horse, as discussed above</p>
+      <p>Another strategy is to go for building - and this divides into two sub-strategies. One can build with railroads, or one can build with mines.
+      If you are bold, you can go for both. They each have their advantages and disadvantages, but know that if one is building railroads, they need
+      cowboys to sustain cities, and they should look for the Bessemer Process event, and if one goes for mine building they should look out for
+      the Molly Maguires and hope for the Rise of Taylorism event (this one is beneficial for railroads as well). A strategy that has been known
+      to work well is to go for the diagonal cut-off - build a wall of railroads, mines, cities, and players, which the other team cannot pass, and then
+      build outwards from their, into their area of the board. This gives them less space to build, and you more. If one is to have a truly effective
+      strategy, they need to know which characters to pick at the beginning to work well with eachother, and which characters they are likely to get
+      in events, so that they will choose less of those initially. Good luck, cowboy, and go onwards to your destiny!</p>
+
+      <h1 id="rules">The Process</h1>
+      <hr clas="head-hr">
+      <p>
+        Mani-Chess Destiny is built entire using JavaScript. The surrounding website is written in HTML and CSS, and the total amount of code utilized for
+        this project amounts to 3,249 lines. All of the code can be found at this GitHub repository if someone is interested. Well over 25 hours went into this
+        project, not only in coding but in research and design as well. The project was done entirely by one person in about a week. It is intended to be
+        educational and entertaining, simple for the user, but clearly complex in theory, history, and design. Thank you for playing Mani-Chess Destiny!
+      </p>
+    </div>
+
+  </body>
+</html>

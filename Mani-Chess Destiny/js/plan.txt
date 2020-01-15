@@ -1,0 +1,178 @@
+4 players on each team - each player can choose:
+  -Business Owner
+    -VANDERBILT
+      -controlled railroads and shipping
+    -ROCKEFELLER
+      -controlled oil companies, symbolizes monopolies
+    -J.P MORGAN
+      -banking and investment
+
+  -Politician
+    -Cleveland
+    -BOSS TWEED
+      -Tammany hall
+
+  -Immigrants
+    -can immigrate
+    -can urbanize - if two stay next to each other for two turns
+      -produce a city
+        -cities draw more immigrants
+    -can help with railroad
+
+  -Native Americans
+    -CHEIF JOSEPH
+      -made the run to Canada with entire Nez Perce tribe
+    -CRAZY HORSE
+      -Battle of Little Bighorn
+    -SCHOOL AGE BOY
+      -can go to school, becomes politician, loses Native American powers
+
+  -Social/cultural figures
+    -Susan B Anthony
+      -civil rights and women's suffrage
+    -Harriet Beecher Stowe
+      -Anti-slavery, racism
+    -Frederick Remington
+      -create new cowboys
+
+  -Lone Miner
+    -Pan for gold - can strike it rich very rarely
+
+  -Cowboy
+    -Cattle runs, rodeos
+    -follow trains - have to be near a train track, or can run their whole team to a train track
+
+Goal of game:
+  -Have the most property (railroads, cities, and players) on the board by the end of the game. The only players that may be added
+  to the game are immigrants, cowboys, and, rarely, lone miners.
+
+
+
+Progress Note:
+  As of 8:38 P.M. on 1/6/2020, the basic game mechanisms are down, and the character's abilities are ready to be specialized.
+    -A basic 10 x 10 board is drawn, with six characters on each side
+    -The characters may not go into other players' squares
+    -Each player may choose the identities of their six characters from a pre-game menu, and the common players all have restrictions on
+    their movements.
+    -When a character is hovered over, a small menu pops up identifying the character, and also having two buttons, which register and report
+    interaction but have no features attached to them yet. This feature is toggle-able in-game.
+
+    -Moving forward:
+      -DONE -------- For immigrants: when a button is pressed on their pop-up menus, the square in front of the one that they are in will
+                     become the foundation of a city.
+      -DONE -------- Business Owners and Politicians cannot move
+      -DONE -------- Railroads may be built by business owners
+      -DONE -------- There will be a city cap of two until a railroad of length three is built.
+      -DONE -------- Every turn, a city has the potential of producing another immigrant. This may be done if a cowboy has gone from a railroad to
+                     that city without stopping at any other cities since last stopping at a railroad.
+      -DONE -------- At least two immigrants are needed on a team in order for a railroad to be built.
+      -DONE -------- At least one farmer needed for a city to be built, but no more than 3 otherwise no more cities can be Built
+      -DONE -------- If more than four railroads on a team, 1 farmer and 1 immigrant lost and two railroads lost
+      -DONE -------- Every five turns, if the opposite team has at least one city, a social reformer that is not Frederick Remington has the power to
+                     convert one of the immigrants on the other team to their team. -------- FIX TURN COUNT MODULUS CONDITION
+      -DONE -------- Every five turns, Frederick Remington may add a farmer to his team. -------- FIX TURN COUNT MODULUS CONDITION
+      -TESTING -------- If a team's politician is Populist and Tweed has their team in favor, another farmer is created
+      -TESTING -------- If a team's politician is Republican and Tweed has their team in favor, another business owner is created. Type is random.
+      -TESTING -------- If a team's politician is Democratic and Tweed has their team in favor, the other team loses their freedmen
+      -DONE -------- Gowen creates coal mines instead of railroads
+      -DONE -------- When a coal mine is next to a city and the team has within the right range of farmers an immigrant is created
+
+      -DONE -------- NEED SOMETHING FOR NATIVE AMERICANS/FREEDMEN
+
+
+    -EVENT SYSTEM
+      -WRITTEN - DONE -------- Homestead act - add one Farmer
+      -WRITTEN - DONE -------- Kansas tornado - turn 2 farmers into Politicians at random from board
+      -WRITTEN - DONE -------- Panic of 1893 - 2 railroads gone, 2 farmers gone, two immigrants gone at random from board
+      -WRITTEN - DONE -------- Coxey gets to Washington - if politician is populist, add two farmers
+      -WRITTEN - DONE -------- Horatio Alger publishes Ragged Dick
+                          -Was a book where a boy in poverty gets a job, becomes respectable
+                          -Adds immigrants by making America look better, promoting American dream
+      -TESTING -------- Tweed puts a team in favor if they have more than 4 cities and the other team doesn't
+      -WRITTEN - DONE -------- Rise of Taylorism - add one railroad and one mine to each side
+      -WRITTEN - DONE -------- Molly Maguires strike! - All mines from the board are gone
+      -WRITTEN - DONE -------- Timber culture act - allocate one square to be a forest - FIX FOREST COLOR
+      -WRITTEN - DONE -------- Comstock Lode - add another business owner at random to a team
+      -WRITTEN - DONE -------- Olmstead and Vaux create a park - FIX PARK COLOR
+      -WRITTEN - DONE -------- Baseball field Built - FIX FIELD COLORS
+      -WRITTEN - DONE -------- Immigration restriction league - no immigrant production next turn
+      -WRITTEN - DONE -------- Pullman Strike - minus one railroad
+      -WRITTEN - DONE -------- Sand Creek Massacre - minus one native from each side
+      -WRITTEN - DONE -------- Natives are put on reservations - they can no longer move
+      -WRITTEN - DONE -------- Dawes Act - natives to farmers
+      -WRITTEN - DONE -------- Drought - Lose a farmer and have one spot allocated to be a windmill
+      -WRITTEN - DONE -------- If >2 freedmen, add one city on that team
+      -WRITTEN - DONE -------- Bessemer process - add one railroad to the board
+      -WRITTEN - DONE -------- Molly Maguires also minus one immigrant from board
+      -WRITTEN - DONE -------- Haymarket square - lose one immigrant on each side
+      -WRITTEN - DONE -------- Steel girder structure - no more fires
+      -WRITTEN - DONE -------- City fire - take away one city from board
+      -WRITTEN - DONE -------- Looking backwards - add one city to the board
+      -WRITTEN - DONE -------- Social Darwinism - minus one immigrant from the board
+      -WRITTEN - DONE -------- Interstate commerce act - adds a farmer if that team has more than 2 railroads
+      -WRITTEN - DONE -------- Currency act - one populist gone from board
+
+
+      -PROGRESS -------- When an event occurs, a popup is shown that gives an explanation of the event and why it does what it does.
+
+ISSUES
+  -RESOLVED -------- After rise of Taylorism (maybe?), mines no longer produce immigrants each turn
+  -RESOLVED -------- Issues with info-boxes only showing sometimes for #11, #14, and sometimes produced #13s
+  -RESOLVED -------- Immigrants produced by mines often cannot build cities
+  -RESOLVED -------- Kansas tornado just switches a farmer on one team to the other team
+  -RESOLVED -------- J.P. Morgan cannot build Railroads
+  -RESOLVED -------- Business owner info-boxes do not always show. Later in game they can stop working, probably after an event? (Kansas tornado?)
+  -RESOLVED -------- Sometimes it says occupied squares are occupied when they are not. This has only been observed to occur around farmers generated from Coxey's Rebellion.
+  -RESOLVED -------- If an object is on an edge and it has to check all the squares around it an error is thrown. Account for this.
+  -PENDING -------- Kansas Tornado generates populists on top of farmers
+  -RESOLVED -------- Team 2 mines are not generating immigrants
+  -RESOLVED -------- freedmen can move like natives
+
+
+
+  -Test if winning system function and if winning is possible/works
+  -DONE -------- Change button names for farmers, natives, politicians, etc.
+  -DONE -------- Use shapes instead of numbers to label characters in-game
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //==========================================================================//
